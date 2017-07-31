@@ -1,5 +1,6 @@
 Чтобы скачать с гитхаба проект запускаем git и набираем команду
-https://github.com/Manas95st/greetgo-exam.git
+
+git clone https://github.com/Manas95st/greetgo-exam.git
 Открываем проект с помощью IDE, ждем пока зависимости скачаются Maven-ом. 
 
 В файле src\main\webapp\WEB-INF\spring\appServlet\servlet-context.xml изменяем строку номер 34 для работы с базы данных. Набираем имя пользователя и пароль.
