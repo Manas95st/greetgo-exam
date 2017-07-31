@@ -1,0 +1,41 @@
+<?xml version= "1.0" encoding= "UTF-8"?>
+<beans:beans xmlns:beans= "http://www.springframework.org/schema/beans"
+             xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+             xmlns= "http://www.springframework.org/schema/security"
+             xsi:schemaLocation= "http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+
+    <http auto-config= "true"  use-expressions= "true" >
+
+        <intercept-url pattern= "/table*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern= "/add*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern= "/delete*" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern= "/deletequestion*" access="hasRole('ROLE_ADMIN')"/>
+        
+        <form-login
+        	login-page="/login"
+        	default-target-url="/table"
+        	authentication-failure-url="/login?error=true"
+        	username-parameter="user-auth"
+        	password-parameter="password-auth" />
+        <logout logout-success-url="/login"/>
+        
+
+    </http>
+
+	
+    <authentication-manager >
+        <authentication-provider >
+        	<user-service>
+        	 	<user name="admin" password="admin" authorities="ROLE_ADMIN" />
+        	</user-service>
+        </authentication-provider>
+    </authentication-manager>
+
+	
+
+</beans:beans>
